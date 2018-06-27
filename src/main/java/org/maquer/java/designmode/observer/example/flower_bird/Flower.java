@@ -16,11 +16,15 @@ public class Flower {
 	public void open() {
 		this.isOpen = true;
 		System.out.println("花开");
+		FlowerStateChangeEvent event = new FlowerStateChangeEvent(this, this.isOpen);
+		this.notifyObservers(event);
 	}
 
 	public void close() {
 		this.isOpen = false;
 		System.out.println("花闭");
+		FlowerStateChangeEvent event = new FlowerStateChangeEvent(this, this.isOpen);
+		this.notifyObservers(event);
 	}
 
 	private Vector<Observer> vec = new Vector<Observer>();
